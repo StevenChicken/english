@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>English Grammar Exercises</title>
+    <style>
+/* Updated CSS to match Cortex's style */
+
+/* Import Cortex's font if different. Assuming 'Roboto' for example purposes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Update the overall font and background color */
+body {
+    font-family: 'Roboto', sans-serif; /* Changed from Arial to Roboto */
+    margin: 20px;
+    background-color: #f9f9f9; /* Example background color similar to Cortex */
+    color: #333333; /* Darker text color for better readability */
+}
+
+/* Update the main heading style */
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Example heading color similar to Cortex */
+    font-size: 2.5em; /* Increased font size for prominence */
+    margin-bottom: 20px;
+}
+
+/* Style for the tabs container */
+#tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    overflow-x: auto;
+    border-bottom: 2px solid #2c3e50; /* Thicker border for emphasis */
+    margin-bottom: 20px;
+    background-color: #ecf0f1; /* Light grey background for tabs */
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+}
+
+/* Style for individual tabs */
+#tabs li {
+    padding: 12px 25px; /* Increased padding for better click area */
+    cursor: pointer;
+    border: 1px solid #bdc3c7; /* Light border around tabs */
+    border-bottom: none;
+    margin-right: 5px;
+    background-color: #ecf0f1; /* Consistent background with tabs container */
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    font-weight: 500; /* Medium font weight */
+    color: #2c3e50; /* Text color */
+}
+
+/* Style for the active tab */
+#tabs li.active {
+    background-color: #2c3e50; /* Dark background for active tab */
+    color: #ffffff; /* White text for contrast */
+    font-weight: 700; /* Bold font weight */
+}
+
+/* Style for the content of each unit */
+.unit-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #bdc3c7; /* Light border around content */
+    border-top: none;
+    background-color: #ffffff; /* White background for content */
+    border-radius: 0 5px 5px 5px; /* Rounded bottom corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Display the active unit content */
+.unit-content.active {
+    display: block;
+}
+
+/* Style for each exercise section */
+.exercise {
+    margin-bottom: 40px;
+}
+
+/* Style for exercise titles */
+.exercise h2 {
+    margin-top: 0;
+    color: #34495e; /* Slightly different color for variety */
+    font-size: 1.8em;
+}
+
+/* Style for instructions */
+.instructions {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #7f8c8d; /* Grey color for instructions */
+}
+
+/* Style for the list of questions */
+.questions {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Style for each question item */
+.questions li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ecf0f1; /* Light separator */
+}
+
+/* Style for input fields */
+.questions input[type="text"],
+.questions textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #bdc3c7; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 1em;
+}
+
+/* Style for the check answer button */
+.check-button {
+    padding: 10px 20px;
+    background-color: #2980b9; /* Changed to a different blue */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the check answer button */
+.check-button:hover {
+    background-color: #1c5980; /* Darker blue on hover */
+}
+
+/* Style for feedback messages */
+.feedback {
+    margin-top: 5px;
+    display: block;
+    font-size: 0.9em;
+}
+
+/* Correct answer feedback */
+.feedback.correct {
+    color: #27ae60; /* Green color */
+}
+
+/* Incorrect answer feedback */
+.feedback.incorrect {
+    color: #c0392b; /* Red color */
+}
+
+/* Style for the score display */
+.score {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #2c3e50; /* Consistent text color */
+}
+
+/* Accessibility: Focus styles */
+.check-button:focus,
+#tabs li:focus {
+    outline: 2px solid #2980b9; /* Blue outline for focus */
+    outline-offset: 2px;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    #tabs {
+        flex-direction: column;
+    }
+    #tabs li {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Grammar Exercises</h1>
+    <ul id="tabs">
+        <!-- Tabs will be generated here -->
+    </ul>
+
+    <div id="units-container">
+        <!-- Units content will be generated here -->
+    </div>
+
+    <script>
+        var data = {
+            "unit3": {
+                "title": "Unit 3 - Present Continuous",
+                "exercises": [
+                    {
+                        "title": "3.1 What are these people doing?",
+                        "instructions": "Use these verbs to complete the sentences: (eat, have, lie, play, sit, wait)",
+                        "questions": [
+                            {
+                                "question": "1. __________ an apple.",
+                                "answer": ["eating"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. __________ for a bus.",
+                                "answer": ["waiting"]
+                            },
+                            {
+                                "question": "3. __________ football.",
+                                "answer": ["playing"]
+                            },
+                            {
+                                "question": "4. __________ on the floor.",
+                                "answer": ["lying"]
+                            },
+                            {
+                                "question": "5. __________ breakfast.",
+                                "answer": ["having"]
+                            },
+                            {
+                                "question": "6. __________ on the table.",
+                                "answer": ["sitting"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "3.2 Complete the sentences.",
+                        "instructions": "Use these verbs: (build, cook, go, have, stand, stay, swim, work)",
+                        "questions": [
+                            {
+                                "question": "1. Please be quiet. I am __________.",
+                                "answer": ["working"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. 'Where's John?' 'He's in the kitchen. He __________.'",
+                                "answer": ["is cooking", "he is cooking", "he's cooking", "cooking"]
+                            },
+                            {
+                                "question": "3. 'You __________ on my foot!' 'Oh, I'm sorry.'",
+                                "answer": ["are standing", "you're standing", "you are standing", "standing"]
+                            },
+                            {
+                                "question": "4. Look! Somebody __________ in the river.",
+                                "answer": ["is swimming", "somebody is swimming", "swimming"]
+                            },
+                            {
+                                "question": "5. We're here on holiday. We __________ at the Central Hotel.",
+                                "answer": ["are staying", "we are staying", "staying"]
+                            },
+                            {
+                                "question": "6. 'Where's Sue?' 'She __________ a shower.'",
+                                "answer": ["is having", "she is having", "having"]
+                            },
+                            {
+                                "question": "7. They __________ a new hotel in the city center at the moment.",
+                                "answer": ["are building", "they are building", "building"]
+                            },
+                            {
+                                "question": "8. I __________ now. Goodbye.",
+                                "answer": ["am going", "i am going", "i'm going", "going"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "3.3 Write sentences about Jane. Use She's -ing or She isn't -ing.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. (have dinner) __________",
+                                "answer": ["she's having dinner", "she is having dinner"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (watch TV) __________",
+                                "answer": ["she isn't watching tv", "she is not watching tv", "she's not watching tv"]
+                            },
+                            {
+                                "question": "3. (sit on the floor) __________",
+                                "answer": ["she's sitting on the floor", "she is sitting on the floor"]
+                            },
+                            {
+                                "question": "4. (read a book) __________",
+                                "answer": ["she isn't reading a book", "she is not reading a book", "she's not reading a book"]
+                            },
+                            {
+                                "question": "5. (play the piano) __________",
+                                "answer": ["she isn't playing the piano", "she is not playing the piano", "she's not playing the piano"]
+                            },
+                            {
+                                "question": "6. (laugh) __________",
+                                "answer": ["she's laughing", "she is laughing"]
+                            },
+                            {
+                                "question": "7. (wear a hat) __________",
+                                "answer": ["she's wearing a hat", "she is wearing a hat"]
+                            },
+                            {
+                                "question": "8. (drink coffee) __________",
+                                "answer": ["she isn't drinking coffee", "she is not drinking coffee", "she's not drinking coffee"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "3.4 What’s happening now? Write true sentences.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. (I / wash / my hair) __________",
+                                "answer": [],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (it / snow) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. (I / sit / on a chair) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "4. (I / eat) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "5. (it / rain) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "6. (I / learn / English) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "7. (I / listen / to music) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "8. (the sun / shine) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "9. (I / wear / shoes) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "10. (I / read / a newspaper) __________",
+                                "answer": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit4": {
+                "title": "Unit 4 - Questions in Present Continuous",
+                "exercises": [
+                    {
+                        "title": "4.3 Make questions from these words. Put the words in the right order.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. (is / working / Ben / today) __________",
+                                "answer": ["is ben working today?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (what / the children / are / doing) __________",
+                                "answer": ["what are the children doing?"]
+                            },
+                            {
+                                "question": "3. (you / are / listening / to me) __________",
+                                "answer": ["are you listening to me?"]
+                            },
+                            {
+                                "question": "4. (where / your friends / are / going) __________",
+                                "answer": ["where are your friends going?"]
+                            },
+                            {
+                                "question": "5. (are / watching / your parents / TV) __________",
+                                "answer": ["are your parents watching tv?"]
+                            },
+                            {
+                                "question": "6. (what / Jessica / is / cooking) __________",
+                                "answer": ["what is jessica cooking?"]
+                            },
+                            {
+                                "question": "7. (why / you / are / looking / at me) __________",
+                                "answer": ["why are you looking at me?"]
+                            },
+                            {
+                                "question": "8. (is / coming / the bus) __________",
+                                "answer": ["is the bus coming?"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "4.4 Write short answers. Use Yes, I am. / No, it isn’t. etc.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Are you watching TV? __________",
+                                "answer": [],
+                                "example": true
+                            },
+                            {
+                                "question": "2. Are you wearing a watch? __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. Are you eating something? __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "4. Is it raining? __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "5. Are you sitting on the floor? __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "6. Are you feeling well? __________",
+                                "answer": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit5": {
+                "title": "Unit 5 - Present Simple",
+                "exercises": [
+                    {
+                        "title": "5.1 Write these verbs with -s or -es.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. (read) __________",
+                                "answer": ["reads"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (think) __________",
+                                "answer": ["thinks"]
+                            },
+                            {
+                                "question": "3. (fly) __________",
+                                "answer": ["flies"]
+                            },
+                            {
+                                "question": "4. (dance) __________",
+                                "answer": ["dances"]
+                            },
+                            {
+                                "question": "5. (have) __________",
+                                "answer": ["has"]
+                            },
+                            {
+                                "question": "6. (finish) __________",
+                                "answer": ["finishes"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "5.3 Complete the sentences.",
+                        "instructions": "Use: boil, close, cost, cost, like, like, meet, open, speak, teach, wash.",
+                        "questions": [
+                            {
+                                "question": "1. Maria __________ four languages.",
+                                "answer": ["speaks"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. The shops in the city center usually __________ at 9 o'clock in the morning.",
+                                "answer": ["open"]
+                            },
+                            {
+                                "question": "3. The City Museum __________ at 5 o'clock in the evening.",
+                                "answer": ["closes"]
+                            },
+                            {
+                                "question": "4. Tina is a teacher. She __________ mathematics to young children.",
+                                "answer": ["teaches"]
+                            },
+                            {
+                                "question": "5. My job is very interesting. I __________ a lot of people.",
+                                "answer": ["meet"]
+                            },
+                            {
+                                "question": "6. Peter's car is always dirty. He never __________ it.",
+                                "answer": ["washes"]
+                            },
+                            {
+                                "question": "7. Food is expensive. It __________ a lot of money.",
+                                "answer": ["costs"]
+                            },
+                            {
+                                "question": "8. Shoes are expensive. They __________ a lot of money.",
+                                "answer": ["cost"]
+                            },
+                            {
+                                "question": "9. Water __________ at 100 degrees Celsius.",
+                                "answer": ["boils"]
+                            },
+                            {
+                                "question": "10. Laura and I are good friends. I __________ her and she __________ me.",
+                                "answer": ["like", "likes"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "5.4 Write sentences from these words.",
+                        "instructions": "Use the right form of the verb (arrive or arrives).",
+                        "questions": [
+                            {
+                                "question": "1. (always / early / Sue / arrive) __________",
+                                "answer": ["sue always arrives early"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (to the cinema / never / I / go) __________",
+                                "answer": ["i never go to the cinema"]
+                            },
+                            {
+                                "question": "3. (work / Martina / hard / always) __________",
+                                "answer": ["martina always works hard"]
+                            },
+                            {
+                                "question": "4. (like / chocolate / children / usually) __________",
+                                "answer": ["children usually like chocolate"]
+                            },
+                            {
+                                "question": "5. (Jackie / parties / enjoy / always) __________",
+                                "answer": ["jackie always enjoys parties"]
+                            },
+                            {
+                                "question": "6. (often / people's names / I / forget) __________",
+                                "answer": ["i often forget people's names"]
+                            },
+                            {
+                                "question": "7. (TV / Sam / watch / never) __________",
+                                "answer": ["sam never watches tv"]
+                            },
+                            {
+                                "question": "8. (usually / dinner / we / have / at 7.30) __________",
+                                "answer": ["we usually have dinner at 7.30"]
+                            },
+                            {
+                                "question": "9. (Kate / always / nice clothes / wear) __________",
+                                "answer": ["kate always wears nice clothes"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "5.5 Write sentences about yourself.",
+                        "instructions": "Use always/never/often/usually/sometimes.",
+                        "questions": [
+                            {
+                                "question": "1. (watch TV in the evening) __________",
+                                "answer": [],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (read in bed) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. (get up before 7 o'clock) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "4. (go to work/school by bus) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "5. (drink coffee in the morning) __________",
+                                "answer": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit6": {
+                "title": "Unit 6 - Negatives in Present Simple",
+                "exercises": [
+                    {
+                        "title": "6.1 Write the negative.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. I play the piano very well. __________",
+                                "answer": ["i don't play the piano very well"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. Anna plays the piano very well. __________",
+                                "answer": ["anna doesn't play the piano very well"]
+                            },
+                            {
+                                "question": "3. They know my phone number. __________",
+                                "answer": ["they don't know my phone number"]
+                            },
+                            {
+                                "question": "4. We work very hard. __________",
+                                "answer": ["we don't work very hard"]
+                            },
+                            {
+                                "question": "5. He has a bath every day. __________",
+                                "answer": ["he doesn't have a bath every day"]
+                            },
+                            {
+                                "question": "6. You do the same thing every day. __________",
+                                "answer": ["you don't do the same thing every day"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "6.3 Write about yourself.",
+                        "instructions": "Use I never ... or I often ... or I don’t ... very often.",
+                        "questions": [
+                            {
+                                "question": "1. (watch TV) __________",
+                                "answer": [],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (go to the theatre) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. (ride a bike) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "4. (eat in restaurants) __________",
+                                "answer": []
+                            },
+                            {
+                                "question": "5. (travel by train) __________",
+                                "answer": []
+                            }
+                        ]
+                    },
+                    {
+                        "title": "6.4 Complete the sentences. All of them are negative.",
+                        "instructions": "Use don’t/doesn’t + these verbs: cost, go, know, rain, see, use, wear.",
+                        "questions": [
+                            {
+                                "question": "1. The weather here is usually nice. It __________ much.",
+                                "answer": ["doesn't rain"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. Paul has a car, but he __________ it very often.",
+                                "answer": ["doesn't use"]
+                            },
+                            {
+                                "question": "3. Paul and his friends like films, but they __________ to the cinema very often.",
+                                "answer": ["don't go"]
+                            },
+                            {
+                                "question": "4. Amanda is married, but she __________ a ring.",
+                                "answer": ["doesn't wear"]
+                            },
+                            {
+                                "question": "5. I __________ much about politics. I’m not interested in it.",
+                                "answer": ["don't know"]
+                            },
+                            {
+                                "question": "6. The Regent Hotel isn’t expensive. It __________ much to stay there.",
+                                "answer": ["doesn't cost"]
+                            },
+                            {
+                                "question": "7. Ed lives very near us, but we __________ him very often.",
+                                "answer": ["don't see"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "6.5 Put the verb into the correct form, positive or negative.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Margaret __________ four languages — English, French, German, and Spanish.",
+                                "answer": ["speaks"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. I __________ my job. It’s very boring.",
+                                "answer": ["don't like"]
+                            },
+                            {
+                                "question": "3. ‘Where’s Steve?’ ‘I’m sorry. I __________.’",
+                                "answer": ["don't know"]
+                            },
+                            {
+                                "question": "4. Sue is a very quiet person. She __________ very much.",
+                                "answer": ["doesn't talk"]
+                            },
+                            {
+                                "question": "5. Andy __________ a lot of tea. It’s his favorite drink.",
+                                "answer": ["drinks"]
+                            },
+                            {
+                                "question": "6. It’s not true! I __________ it!",
+                                "answer": ["don't believe"]
+                            },
+                            {
+                                "question": "7. That’s a very beautiful picture. I __________ it very much.",
+                                "answer": ["like"]
+                            },
+                            {
+                                "question": "8. Mark is a vegetarian. He __________ meat.",
+                                "answer": ["doesn't eat"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit7": {
+                "title": "Unit 7 - Questions in Present Simple",
+                "exercises": [
+                    {
+                        "title": "7.1 Write questions with Do ... ? and Does ... ?",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. I like chocolate. How about you? __________",
+                                "answer": ["do you like chocolate?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. I play tennis. How about you? __________",
+                                "answer": ["do you play tennis?"]
+                            },
+                            {
+                                "question": "3. You live near here. How about Lucy? __________",
+                                "answer": ["does lucy live near here?"]
+                            },
+                            {
+                                "question": "4. Tom plays tennis. How about his friends? __________",
+                                "answer": ["do his friends play tennis?", "do tom's friends play tennis?"]
+                            },
+                            {
+                                "question": "5. You speak English. How about your brother? __________",
+                                "answer": ["does your brother speak english?"]
+                            },
+                            {
+                                "question": "6. I do yoga every morning. How about you? __________",
+                                "answer": ["do you do yoga every morning?"]
+                            },
+                            {
+                                "question": "7. Sue goes away a lot. How about Paul? __________",
+                                "answer": ["does paul go away a lot?", "does paul go away much?"]
+                            },
+                            {
+                                "question": "8. I want to be famous. How about you? __________",
+                                "answer": ["do you want to be famous?"]
+                            },
+                            {
+                                "question": "9. You work hard. How about Anna? __________",
+                                "answer": ["does anna work hard?"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "7.2 Make questions from these words + do/does.",
+                        "instructions": "Put the words in the right order.",
+                        "questions": [
+                            {
+                                "question": "1. (where / live / your parents) __________",
+                                "answer": ["where do your parents live?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (you / early / always / get up) __________",
+                                "answer": ["do you always get up early?"]
+                            },
+                            {
+                                "question": "3. (how often / TV / you / watch) __________",
+                                "answer": ["how often do you watch tv?"]
+                            },
+                            {
+                                "question": "4. (you / want / what / for dinner) __________",
+                                "answer": ["what do you want for dinner?"]
+                            },
+                            {
+                                "question": "5. (like / you / football) __________",
+                                "answer": ["do you like football?"]
+                            },
+                            {
+                                "question": "6. (your brother / like / football) __________",
+                                "answer": ["does your brother like football?"]
+                            },
+                            {
+                                "question": "7. (what / you / do / in your free time) __________",
+                                "answer": ["what do you do in your free time?"]
+                            },
+                            {
+                                "question": "8. (your sister / work / where) __________",
+                                "answer": ["where does your sister work?"]
+                            },
+                            {
+                                "question": "9. (breakfast / always / you / have) __________",
+                                "answer": ["do you always have breakfast?"]
+                            },
+                            {
+                                "question": "10. (what / mean / this word) __________",
+                                "answer": ["what does this word mean?"]
+                            },
+                            {
+                                "question": "11. (in winter / snow / it / here) __________",
+                                "answer": ["does it snow here in winter?"]
+                            },
+                            {
+                                "question": "12. (go / usually / to bed / what time / you) __________",
+                                "answer": ["what time do you usually go to bed?"]
+                            },
+                            {
+                                "question": "13. (how much / to phone New York / it / cost) __________",
+                                "answer": ["how much does it cost to phone new york?"]
+                            },
+                            {
+                                "question": "14. (you / for breakfast / have / usually / what) __________",
+                                "answer": ["what do you usually have for breakfast?"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit8": {
+                "title": "Unit 8 - Present Simple vs Present Continuous",
+                "exercises": [
+                    {
+                        "title": "8.2 Complete the sentences with am/is/are or do/don’t/does/doesn’t.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Excuse me, __________ you speak English?",
+                                "answer": ["do"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. 'Where’s Kate?' 'I __________ know.'",
+                                "answer": ["don't"]
+                            },
+                            {
+                                "question": "3. What’s funny? Why __________ you laughing?",
+                                "answer": ["are"]
+                            },
+                            {
+                                "question": "4. 'What __________ your sister do?' 'She’s a dentist.'",
+                                "answer": ["does"]
+                            },
+                            {
+                                "question": "5. It __________ raining. I __________ want to go out in the rain.",
+                                "answer": ["isn't", "don't"]
+                            },
+                            {
+                                "question": "6. 'Where __________ you come from?' 'Canada.'",
+                                "answer": ["do"]
+                            },
+                            {
+                                "question": "7. How much __________ it cost to stay at this hotel? Is it expensive?",
+                                "answer": ["does"]
+                            },
+                            {
+                                "question": "8. Steve is a good tennis player, but he __________ play very often.",
+                                "answer": ["doesn't"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "8.3 Put the verb in the present continuous (I am doing) or the present simple (I do).",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Excuse me, __________ (you/speak) English?",
+                                "answer": ["do you speak"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. 'Where’s Tom?' 'He __________ (he/have) a shower.'",
+                                "answer": ["is having", "he is having", "he's having"]
+                            },
+                            {
+                                "question": "3. __________ (I/not/watch) TV very often.",
+                                "answer": ["i don't watch"]
+                            },
+                            {
+                                "question": "4. Listen! Somebody __________ (sing).",
+                                "answer": ["is singing"]
+                            },
+                            {
+                                "question": "5. Sarah is tired. She __________ (want) to go home now.",
+                                "answer": ["wants"]
+                            },
+                            {
+                                "question": "6. How often __________ (you/use) your car? Every day?",
+                                "answer": ["do you use"]
+                            },
+                            {
+                                "question": "7. ‘Excuse me, but __________ (you/sit) in my seat.’ 'Oh, I’m sorry.'",
+                                "answer": ["you're sitting", "you are sitting"]
+                            },
+                            {
+                                "question": "8. I’m sorry, __________ (I/not/understand). Can you speak more slowly?",
+                                "answer": ["i don't understand"]
+                            },
+                            {
+                                "question": "9. It’s late. __________ (I/go) home now. __________ (you/come) with me?",
+                                "answer": ["i'm going", "are you coming"]
+                            },
+                            {
+                                "question": "10. What time __________ (your father / finish) work every day?",
+                                "answer": ["does your father finish"]
+                            },
+                            {
+                                "question": "11. You can turn off the radio. __________ (I/not/listen) to it.",
+                                "answer": ["i'm not listening"]
+                            },
+                            {
+                                "question": "12. 'Where’s Paul?' 'In the kitchen. He __________ (cook) something.'",
+                                "answer": ["is cooking", "he is cooking", "he's cooking"]
+                            },
+                            {
+                                "question": "13. Mark __________ (not/usually/drive) to work. He __________ (usually/walk).",
+                                "answer": ["doesn't usually drive", "usually walks"]
+                            },
+                            {
+                                "question": "14. Sue __________ (not/like) coffee. She __________ (prefer) tea.",
+                                "answer": ["doesn't like", "prefers"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit32": {
+                "title": "Unit 32 - Should (Advice)",
+                "exercises": [
+                    {
+                        "title": "32.1 Complete the sentences.",
+                        "instructions": "Use you should + these verbs: eat, go, take, visit, watch, wear",
+                        "questions": [
+                            {
+                                "question": "1. When you play tennis, __________ the ball.",
+                                "answer": ["you should watch"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. It’s late and you’re very tired. __________ to bed.",
+                                "answer": ["you should go"]
+                            },
+                            {
+                                "question": "3. __________ plenty of fruit and vegetables.",
+                                "answer": ["you should eat"]
+                            },
+                            {
+                                "question": "4. If you have time, __________ the Science Museum. It’s very interesting.",
+                                "answer": ["you should visit"]
+                            },
+                            {
+                                "question": "5. When you’re driving, __________ a seatbelt.",
+                                "answer": ["you should wear"]
+                            },
+                            {
+                                "question": "6. It’s too far to walk from here to the station. __________ a taxi.",
+                                "answer": ["you should take"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "32.3 Write questions with Do you think I should … ?",
+                        "instructions": "You are not sure what to do, so you ask a friend.",
+                        "questions": [
+                            {
+                                "question": "1. You are in a shop. You are trying on a jacket.\n   __________",
+                                "answer": ["do you think i should buy it?", "do you think i should buy this jacket?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. You can’t drive. (learn?)\n   __________",
+                                "answer": ["do you think i should learn to drive?", "do you think i should learn?"]
+                            },
+                            {
+                                "question": "3. You don’t like your job. (get another job?)\n   __________",
+                                "answer": ["do you think i should get another job?"]
+                            },
+                            {
+                                "question": "4. You are going to have a party. (invite Gary?)\n   __________",
+                                "answer": ["do you think i should invite gary?"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "32.4 Write sentences with I think … should … and I don’t think … should …",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. We have to get up early tomorrow. (go home now)\n   __________",
+                                "answer": ["i think we should go home now"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. That coat is too big for you. (buy it)\n   __________",
+                                "answer": ["i don't think you should buy it"]
+                            },
+                            {
+                                "question": "3. You don’t need your car. (sell it)\n   __________",
+                                "answer": ["i think you should sell it"]
+                            },
+                            {
+                                "question": "4. Karen needs a rest. (have a holiday)\n   __________",
+                                "answer": ["i think she should have a holiday"]
+                            },
+                            {
+                                "question": "5. Sarah and Dan are too young. (get married)\n   __________",
+                                "answer": ["i don't think they should get married"]
+                            },
+                            {
+                                "question": "6. You’re not well this morning. (go to work)\n   __________",
+                                "answer": ["i don't think you should go to work"]
+                            },
+                            {
+                                "question": "7. James isn’t well today. (go to the doctor)\n   __________",
+                                "answer": ["i think he should go to the doctor"]
+                            },
+                            {
+                                "question": "8. The hotel is too expensive for us. (stay there)\n   __________",
+                                "answer": ["i don't think we should stay there"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "32.5 What do you think? Write sentences with should.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. I think __________.",
+                                "answer": [],
+                                "example": true
+                            },
+                            {
+                                "question": "2. I think everybody __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. I think __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "4. I don’t think __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "5. I think __________.",
+                                "answer": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit46": {
+                "title": "Unit 46 - Questions with 'who', 'what', 'which'",
+                "exercises": [
+                    {
+                        "title": "46.1 Write questions with who or what.",
+                        "instructions": "You want the missing information (XXXXX).",
+                        "questions": [
+                            {
+                                "question": "1. The letter is from XXXXX.\n   Who is the letter from?",
+                                "answer": ["who is the letter from?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. I’m looking for a XXXXX.\n   What are you looking for?",
+                                "answer": ["what are you looking for?"]
+                            },
+                            {
+                                "question": "3. I went to the cinema with XXXXX.\n   Who did you go to the cinema with?",
+                                "answer": ["who did you go to the cinema with?"]
+                            },
+                            {
+                                "question": "4. The film was about XXXXX.\n   What was the film about?",
+                                "answer": ["what was the film about?"]
+                            },
+                            {
+                                "question": "5. I gave the money to XXXXX.\n   Who did you give the money to?",
+                                "answer": ["who did you give the money to?"]
+                            },
+                            {
+                                "question": "6. The book was written by XXXXX.\n   Who was the book written by?",
+                                "answer": ["who was the book written by?"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "46.3 Write questions beginning Which ... ?",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Tom’s father is in hospital.\n   Which hospital is he in?",
+                                "answer": ["which hospital is he in?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. We stayed at a hotel.\n   Which hotel did you stay at?",
+                                "answer": ["which hotel did you stay at?"]
+                            },
+                            {
+                                "question": "3. Jack plays for a football team.\n   Which team does he play for?",
+                                "answer": ["which team does he play for?"]
+                            },
+                            {
+                                "question": "4. I went to school in this town.\n   Which school did you go to?",
+                                "answer": ["which school did you go to?"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "46.4 Ask questions with What is/are ... like?",
+                        "instructions": "You want some information about another country.",
+                        "questions": [
+                            {
+                                "question": "1. (the roads) What are the roads like?",
+                                "answer": ["what are the roads like?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. (the food) __________",
+                                "answer": ["what is the food like?"]
+                            },
+                            {
+                                "question": "3. (the people) __________",
+                                "answer": ["what are the people like?"]
+                            },
+                            {
+                                "question": "4. (the weather) __________",
+                                "answer": ["what is the weather like?"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "46.5 Ask questions with What was/were ... like?",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Your friend has just come back from holiday. Ask about the weather.\n   What was the weather like?",
+                                "answer": ["what was the weather like?"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. Your friend has just come back from the cinema. Ask about the film.\n   What was the film like?",
+                                "answer": ["what was the film like?"]
+                            },
+                            {
+                                "question": "3. Your friend has just finished an English course. Ask about the lessons.\n   What were the lessons like?",
+                                "answer": ["what were the lessons like?"]
+                            },
+                            {
+                                "question": "4. Your friend has just come back from holiday. Ask about the hotel.\n   What was the hotel like?",
+                                "answer": ["what was the hotel like?"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit106": {
+                "title": "Unit 106 - Prepositions (in/at/on)",
+                "exercises": [
+                    {
+                        "title": "106.2 Write in/at/on.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Don’t sit __________ the grass. It’s wet.",
+                                "answer": ["on"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. What do you have __________ your bag?",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "3. Look! There’s a man __________ the roof. What’s he doing?",
+                                "answer": ["on"]
+                            },
+                            {
+                                "question": "4. There are a lot of fish __________ this river.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "5. Our house is number 45 – the number is __________ the door.",
+                                "answer": ["on"]
+                            },
+                            {
+                                "question": "6. ‘Is the hospital near here?’ ‘Yes, turn left __________ the traffic lights.’",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "7. It’s difficult to park __________ the centre of town. It’s better to take the bus.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "8. My sister lives __________ Brussels.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "9. There’s a small park __________ the top of the hill.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "10. I think I heard the doorbell. There’s somebody __________ the door.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "11. Munich is a large city __________ the south of Germany.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "12. There are a few shops __________ the end of the street.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "13. It’s difficult to carry a lot of things __________ a bike.",
+                                "answer": ["on"]
+                            },
+                            {
+                                "question": "14. I looked at the list of names. My name was __________ the bottom.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "15. There is a mirror __________ the wall __________ the living room.",
+                                "answer": ["on", "in"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit107": {
+                "title": "Unit 107 - Prepositions (in/at/on) Part 2",
+                "exercises": [
+                    {
+                        "title": "107.2 Write in/at/on.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. Helen is studying law __________ university.",
+                                "answer": ["at"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. There was a big table __________ the middle of the room.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "3. What is the longest river __________ the world?",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "4. Were there many people __________ the concert last night?",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "5. Will you be __________ home tomorrow afternoon?",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "6. Who is the man __________ this photo? Do you know him?",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "7. Where are your children? Are they __________ school?",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "8. Gary is coming by train. I’m going to meet him __________ the station.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "9. Charlie is __________ hospital. He had an operation yesterday.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "10. How many pages are there __________ this book?",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "11. ‘Are you hungry after your journey?’ ‘No, I had something to eat __________ the train.’",
+                                "answer": ["on"]
+                            },
+                            {
+                                "question": "12. I’m sorry I’m late. My car broke down __________ the way here.",
+                                "answer": ["on"]
+                            },
+                            {
+                                "question": "13. ‘Is Tom here?’ ‘No, he’s __________ his friend’s house.’",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "14. Don’t believe everything you see __________ the newspaper!",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "15. I walked to work, but I came home __________ the bus.",
+                                "answer": ["on"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit108": {
+                "title": "Unit 108 - Prepositions (to/in/at)",
+                "exercises": [
+                    {
+                        "title": "108.1 Write to or in.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. I like reading __________ bed.",
+                                "answer": ["in"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. We’re going __________ Italy next month.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "3. Sue is on holiday __________ Italy at the moment.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "4. I have to go __________ the hospital tomorrow.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "5. I was tired, so I stayed __________ bed late.",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "6. What time do you usually go __________ bed?",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "7. Does this bus go __________ the centre?",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "8. Would you like to live __________ another country?",
+                                "answer": ["in"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "108.2 Write to or at if necessary.",
+                        "instructions": "One sentence is already complete, and no word is necessary.",
+                        "questions": [
+                            {
+                                "question": "1. Paula didn’t go __________ work yesterday.",
+                                "answer": ["to"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. I’m tired. I’m going __________ home. (already complete)",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. Tina is not very well. She has gone __________ the doctor.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "4. Would you like to come __________ a party on Saturday?",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "5. ‘Is Lisa __________ home?’ ‘No, she’s gone __________ work.’",
+                                "answer": ["at", "to"]
+                            },
+                            {
+                                "question": "6. There were 20,000 people __________ the football match.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "7. Why did you go __________ home early last night?",
+                                "answer": []
+                            },
+                            {
+                                "question": "8. A boy jumped into the river and swam __________ the other side.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "9. There were a lot of people waiting __________ the bus stop.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "10. We had a good meal __________ a restaurant, and then we went back __________ the hotel.",
+                                "answer": ["at", "to"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "108.3 Write to, at or in if necessary.",
+                        "instructions": "One sentence is already complete, and no word is necessary.",
+                        "questions": [
+                            {
+                                "question": "1. I’m not going out this afternoon. I’m staying __________ home.",
+                                "answer": ["at"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. We’re going __________ a concert tomorrow evening.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "3. I went __________ New York last year.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "4. How long did you stay __________ New York?",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "5. Next year we hope to go __________ Canada to visit some friends.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "6. Do you want to go __________ the cinema this evening?",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "7. Did you park your car __________ the station?",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "8. After the accident three people were taken __________ hospital.",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "9. How often do you go __________ the dentist?",
+                                "answer": ["to"]
+                            },
+                            {
+                                "question": "10. ‘Is Sarah here?’ ‘No, she’s __________ Helen’s.’",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "11. My house is __________ the end of the street on the left.",
+                                "answer": ["at"]
+                            },
+                            {
+                                "question": "12. I went __________ Maria’s house, but she wasn’t __________ home.",
+                                "answer": ["to", "at"]
+                            },
+                            {
+                                "question": "13. There were no taxis, so we had to walk __________ home.",
+                                "answer": []
+                            },
+                            {
+                                "question": "14. ‘Who did you meet __________ the party?’ ‘I didn’t go __________ the party.’",
+                                "answer": ["at", "to"]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "108.5 Complete these sentences about yourself.",
+                        "instructions": "Use to/in/at.",
+                        "questions": [
+                            {
+                                "question": "1. At 3 o’clock this morning I was __________.",
+                                "answer": [],
+                                "example": true
+                            },
+                            {
+                                "question": "2. Yesterday I went __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "3. At 11 o’clock yesterday morning I was __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "4. One day I’d like to go __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "5. I don’t like going __________.",
+                                "answer": []
+                            },
+                            {
+                                "question": "6. At 9 o’clock yesterday evening I was __________.",
+                                "answer": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "unit110": {
+                "title": "Unit 110 - Prepositions (over/from/into)",
+                "exercises": [
+                    {
+                        "title": "110.3 Complete the sentences. Use over/from/into etc.",
+                        "instructions": "",
+                        "questions": [
+                            {
+                                "question": "1. I looked __________ the window and watched the people in the street.",
+                                "answer": ["out of"],
+                                "example": true
+                            },
+                            {
+                                "question": "2. My house is very near here. It’s just __________ the corner.",
+                                "answer": ["round", "around"]
+                            },
+                            {
+                                "question": "3. ‘Where’s my phone?’ ‘You put it __________ your bag.’",
+                                "answer": ["in"]
+                            },
+                            {
+                                "question": "4. How far is it __________ here __________ the airport?",
+                                "answer": ["from", "to"]
+                            },
+                            {
+                                "question": "5. We walked __________ the museum for an hour and saw a lot of interesting things.",
+                                "answer": ["round", "around"]
+                            },
+                            {
+                                "question": "6. You can put your coat __________ the back of the chair.",
+                                "answer": ["on", "over"]
+                            },
+                            {
+                                "question": "7. In tennis, you have to hit the ball __________ the net.",
+                                "answer": ["over"]
+                            },
+                            {
+                                "question": "8. Silvia took a key __________ her bag and opened the door.",
+                                "answer": ["out of", "from"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var tabs = document.querySelector('#tabs');
+            var unitsContainer = document.querySelector('#units-container');
+
+            // Generate tabs
+            var firstUnit = true;
+            for (var unitId in data) {
+                var unit = data[unitId];
+                var tab = document.createElement('li');
+                tab.textContent = unit.title;
+                tab.setAttribute('data-unit', unitId);
+                if (firstUnit) {
+                    tab.classList.add('active');
+                    firstUnit = false;
+                }
+                tabs.appendChild(tab);
+            }
+
+            // Generate units content
+            firstUnit = true;
+            for (var unitId in data) {
+                var unit = data[unitId];
+                var unitDiv = document.createElement('div');
+                unitDiv.id = unitId;
+                unitDiv.classList.add('unit-content');
+                if (firstUnit) {
+                    unitDiv.classList.add('active');
+                    firstUnit = false;
+                }
+
+                // Generate exercises
+                unit.exercises.forEach(function(exercise) {
+                    var exerciseDiv = document.createElement('div');
+                    exerciseDiv.classList.add('exercise');
+
+                    var exerciseTitle = document.createElement('h2');
+                    exerciseTitle.textContent = exercise.title;
+                    exerciseDiv.appendChild(exerciseTitle);
+
+                    if (exercise.instructions) {
+                        var instructions = document.createElement('p');
+                        instructions.classList.add('instructions');
+                        instructions.textContent = exercise.instructions;
+                        exerciseDiv.appendChild(instructions);
+                    }
+
+                    var questionsList = document.createElement('ol');
+                    questionsList.classList.add('questions');
+                    exercise.questions.forEach(function(q, index) {
+                        var questionItem = document.createElement('li');
+                        var label = document.createElement('label');
+                        label.textContent = q.question;
+                        questionItem.appendChild(label);
+
+                        var input = document.createElement('input');
+                        input.type = 'text';
+                        if (q.example) {
+                            if (q.answer.length > 0) {
+                                input.value = q.answer[0];
+                            } else {
+                                input.value = ""; // Empty if no answer provided
+                            }
+                            input.readOnly = true;
+                        }
+                        questionItem.appendChild(input);
+
+                        var feedback = document.createElement('span');
+                        feedback.classList.add('feedback');
+                        questionItem.appendChild(feedback);
+
+                        questionsList.appendChild(questionItem);
+                    });
+                    exerciseDiv.appendChild(questionsList);
+
+                    var checkButton = document.createElement('button');
+                    checkButton.classList.add('check-button');
+                    checkButton.textContent = 'Check My Answer';
+                    exerciseDiv.appendChild(checkButton);
+
+                    var scoreDiv = document.createElement('div');
+                    scoreDiv.classList.add('score');
+                    exerciseDiv.appendChild(scoreDiv);
+
+                    unitDiv.appendChild(exerciseDiv);
+                });
+
+                unitsContainer.appendChild(unitDiv);
+            }
+
+            // Tab navigation
+            var tabElements = document.querySelectorAll('#tabs li');
+            var unitElements = document.querySelectorAll('.unit-content');
+
+            tabElements.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabElements.forEach(function(t) {
+                        t.classList.remove('active');
+                    });
+                    // Hide all units
+                    unitElements.forEach(function(unit) {
+                        unit.classList.remove('active');
+                    });
+                    // Activate the clicked tab and corresponding unit
+                    tab.classList.add('active');
+                    var unitId = tab.getAttribute('data-unit');
+                    document.getElementById(unitId).classList.add('active');
+                });
+            });
+
+
+
+
+            // Answer checking
+            var exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(function(exercise) {
+                var checkButton = exercise.querySelector('.check-button');
+                checkButton.addEventListener('click', function() {
+                    var questions = exercise.querySelectorAll('.questions li');
+                    var score = 0;
+                    var total = 0;
+                    var exerciseTitle = exercise.querySelector('h2').textContent.trim();
+                    var unitId = exercise.closest('.unit-content').id;
+                    var exerciseData = getExerciseData(unitId, exerciseTitle);
+                    questions.forEach(function(question, index) {
+                        var input = question.querySelector('input');
+                        var userAnswer = input.value.trim().toLowerCase();
+                        var feedback = question.querySelector('.feedback');
+                        var qData = exerciseData.questions[index];
+                        if (qData.example) {
+                            feedback.textContent = "Example";
+                        } else {
+                            if (qData.answer.length === 0) {
+                                feedback.textContent = ""; // No answer provided, user's own answer
+                            } else if (qData.answer.includes(userAnswer)) {
+                                feedback.textContent = "Correct!";
+                                feedback.className = "feedback correct";
+                                score++;
+                            } else {
+                                feedback.textContent = "Incorrect! Correct answer: " + qData.answer[0];
+                                feedback.className = "feedback incorrect";
+                            }
+                            total++;
+                        }
+                    });
+                    exercise.querySelector('.score').textContent = "Your score: " + score + "/" + total;
+                });
+            });
+
+            // Function to get exercise data
+            function getExerciseData(unitId, exerciseTitle) {
+                var unitData = data[unitId];
+                for (var i = 0; i < unitData.exercises.length; i++) {
+                    if (unitData.exercises[i].title.trim() === exerciseTitle) {
+                        return unitData.exercises[i];
+                    }
+                }
+                return null;
+            }
+        });
+    </script>
+</body>
+</html>
