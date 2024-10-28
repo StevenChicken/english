@@ -179,6 +179,17 @@ h1 {
     </style>
 </head>
 <body>
+
+
+    <div id="auth-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h2>Enter Password to Access Content</h2>
+        <input type="password" id="password-input" placeholder="Enter Password" style="padding: 8px; font-size: 1em;">
+        <button id="auth-button" style="padding: 10px 20px; margin-top: 10px; font-size: 1em;">Submit</button>
+        <p id="auth-error" style="color: red; display: none; margin-top: 10px;">Incorrect Password</p>
+    </div>
+
+    
+    <div id="content-container" style="display: none;">
     <h1>Grammar Exercises</h1>
     <ul id="tabs">
         <!-- Tabs will be generated here -->
@@ -1699,6 +1710,30 @@ h1 {
                 return null;
             }
         });
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    var authButton = document.getElementById('auth-button');
+    authButton.addEventListener('click', function() {
+        var passwordInput = document.getElementById('password-input').value;
+        if (passwordInput === 'aubepine') {
+            document.getElementById('auth-container').style.display = 'none'; // Hide the auth prompt
+            document.getElementById('content-container').style.display = 'block'; // Show main content
+        } else {
+            document.getElementById('auth-error').style.display = 'block'; // Show error message
+        }
+    });
+});
+
+
     </script>
+
+
+</div>
+
+
 </body>
 </html>

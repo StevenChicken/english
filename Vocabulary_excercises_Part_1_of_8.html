@@ -2,235 +2,1018 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fill the Gap Exercises</title>
+    <title>Vocabulary Exercises</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+    /* Updated CSS to match Cortex's style */
+
+    /* Import Cortex's font if different. Assuming 'Roboto' for example purposes */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    /* Update the overall font and background color */
+    body {
+        font-family: 'Roboto', sans-serif; /* Changed from Arial to Roboto */
+        margin: 20px;
+        background-color: #f9f9f9; /* Example background color similar to Cortex */
+        color: #333333; /* Darker text color for better readability */
+    }
+
+    /* Update the main heading style */
+    h1 {
+        text-align: center;
+        color: #2c3e50; /* Example heading color similar to Cortex */
+        font-size: 2.5em; /* Increased font size for prominence */
+        margin-bottom: 20px;
+    }
+
+    /* Style for the tabs container */
+    #tabs {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        overflow-x: auto;
+        border-bottom: 2px solid #2c3e50; /* Thicker border for emphasis */
+        margin-bottom: 20px;
+        background-color: #ecf0f1; /* Light grey background for tabs */
+        border-radius: 5px 5px 0 0; /* Rounded top corners */
+    }
+
+    /* Style for individual tabs */
+    #tabs li {
+        padding: 12px 25px; /* Increased padding for better click area */
+        cursor: pointer;
+        border: 1px solid #bdc3c7; /* Light border around tabs */
+        border-bottom: none;
+        margin-right: 5px;
+        background-color: #ecf0f1; /* Consistent background with tabs container */
+        border-radius: 5px 5px 0 0; /* Rounded top corners */
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        font-weight: 500; /* Medium font weight */
+        color: #2c3e50; /* Text color */
+    }
+
+    /* Style for the active tab */
+    #tabs li.active {
+        background-color: #2c3e50; /* Dark background for active tab */
+        color: #ffffff; /* White text for contrast */
+        font-weight: 700; /* Bold font weight */
+    }
+
+    /* Style for the content of each unit */
+    .unit-content {
+        display: none;
+        padding: 20px;
+        border: 1px solid #bdc3c7; /* Light border around content */
+        border-top: none;
+        background-color: #ffffff; /* White background for content */
+        border-radius: 0 5px 5px 5px; /* Rounded bottom corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    /* Display the active unit content */
+    .unit-content.active {
+        display: block;
+    }
+
+    /* Style for each exercise section */
+    .exercise {
+        margin-bottom: 40px;
+    }
+
+    /* Style for exercise titles */
+    .exercise h2 {
+        margin-top: 0;
+        color: #34495e; /* Slightly different color for variety */
+        font-size: 1.8em;
+    }
+
+    /* Style for instructions */
+    .instructions {
+        font-style: italic;
+        margin-bottom: 10px;
+        color: #7f8c8d; /* Grey color for instructions */
+    }
+
+    /* Style for the list of questions */
+    .questions {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    /* Style for each question item */
+    .questions li {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-bottom: 1px solid #ecf0f1; /* Light separator */
+    }
+
+    /* Style for input fields */
+    .questions input[type="text"],
+    .questions textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #bdc3c7; /* Light border */
+        border-radius: 4px; /* Rounded corners */
+        font-size: 1em;
+    }
+
+    /* Style for the check answer button */
+    .check-button {
+        padding: 10px 20px;
+        background-color: #2980b9; /* Changed to a different blue */
+        color: #ffffff;
+        border: none;
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s;
+    }
+
+    /* Hover effect for the check answer button */
+    .check-button:hover {
+        background-color: #1c5980; /* Darker blue on hover */
+    }
+
+    /* Style for feedback messages */
+    .feedback {
+        margin-top: 5px;
+        display: block;
+        font-size: 0.9em;
+    }
+
+    /* Correct answer feedback */
+    .feedback.correct {
+        color: #27ae60; /* Green color */
+    }
+
+    /* Incorrect answer feedback */
+    .feedback.incorrect {
+        color: #c0392b; /* Red color */
+    }
+
+    /* Style for the score display */
+    .score {
+        font-weight: bold;
+        margin-top: 10px;
+        color: #2c3e50; /* Consistent text color */
+    }
+
+    /* Style for the French translation */
+    .french-translation {
+        font-style: italic;
+        color: #7f8c8d;
+        margin-top: 5px;
+    }
+
+    /* Accessibility: Focus styles */
+    .check-button:focus,
+    #tabs li:focus {
+        outline: 2px solid #2980b9; /* Blue outline for focus */
+        outline-offset: 2px;
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 600px) {
+        #tabs {
+            flex-direction: column;
         }
-        h1, h2 {
-            text-align: center;
+        #tabs li {
+            margin-right: 0;
+            margin-bottom: 5px;
         }
-        .exercise {
-            background-color: #fff;
-            margin: 20px auto;
-            padding: 15px;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 800px;
-        }
-        .question {
-            margin-bottom: 10px;
-        }
-        .question input {
-            width: 200px;
-            padding: 5px;
-            margin-left: 10px;
-        }
-        #finish-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        #results {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .correct-answer {
-            color: green;
-        }
-        .wrong-answer {
-            color: red;
-        }
+    }
+
     </style>
 </head>
 <body>
- 
-<h1>Fill the Gap Exercises</h1>
- 
-<div id="exercises-container"></div>
- 
-<button id="finish-btn">Finish</button>
- 
-<div id="results">
-    <h2>Your Score: <span id="score"></span>/<span id="total"></span></h2>
-    <div id="answers"></div>
-</div>
- 
-<script>
-    const exercises = [
+
+    <div id="auth-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h2>Enter Password to Access Content</h2>
+        <input type="password" id="password-input" placeholder="Enter Password" style="padding: 8px; font-size: 1em;">
+        <button id="auth-button" style="padding: 10px 20px; margin-top: 10px; font-size: 1em;">Submit</button>
+        <p id="auth-error" style="color: red; display: none; margin-top: 10px;">Incorrect Password</p>
+    </div>
+
+    <div id="content-container" style="display: none;">
+
+    
+    <h1>Vocabulary Exercises</h1>
+    <ul id="tabs">
+        <!-- Tabs will be generated here -->
+    </ul>
+
+    <div id="units-container">
+        <!-- Units content will be generated here -->
+    </div>
+
+    <script>
+    // Original exercises array with French translations
+    var exercises = [
         // Travel and transport
-        {category: "Travel and transport", sentence: "We went ____ last summer to visit new countries.", answer: "abroad"},
-        {category: "Travel and transport", sentence: "I need to catch the ____ to get to London.", answer: "coach"},
-        {category: "Travel and transport", sentence: "We took a ____ of the museum.", answer: "guided tour"},
-        {category: "Travel and transport", sentence: "I will ____ you at the station.", answer: "pick up"},
-        {category: "Travel and transport", sentence: "There was a long ____ at the ticket office.", answer: "queue"},
-        {category: "Travel and transport", sentence: "I packed my ____ for the trip.", answer: "suitcase"},
-        {category: "Travel and transport", sentence: "Buy your tickets at the ____.", answer: "ticket office"},
-        {category: "Travel and transport", sentence: "The ____ showed us around the city.", answer: "tour guide"},
-        {category: "Travel and transport", sentence: "We are planning a ____ to France.", answer: "trip"},
-        {category: "Travel and transport", sentence: "I stopped to ____ when I got lost.", answer: "ask the way"},
+        {
+            category: "Travel and transport",
+            sentence: "We went ____ last summer to visit new countries.",
+            answer: "abroad",
+            french: "Nous sommes allés à l'étranger l'été dernier pour visiter de nouveaux pays."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "I need to catch the ____ to get to London.",
+            answer: "coach",
+            french: "Je dois prendre le car pour aller à Londres."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "We took a ____ of the museum.",
+            answer: "guided tour",
+            french: "Nous avons fait une visite guidée du musée."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "I will ____ you at the station.",
+            answer: "pick up",
+            french: "Je viendrai te chercher à la gare."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "There was a long ____ at the ticket office.",
+            answer: "queue",
+            french: "Il y avait une longue file d'attente au guichet."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "I packed my ____ for the trip.",
+            answer: "suitcase",
+            french: "J'ai fait ma valise pour le voyage."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "Buy your tickets at the ____.",
+            answer: "ticket office",
+            french: "Achetez vos billets au guichet."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "The ____ showed us around the city.",
+            answer: "tour guide",
+            french: "Le guide touristique nous a fait visiter la ville."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "We are planning a ____ to France.",
+            answer: "trip",
+            french: "Nous prévoyons un voyage en France."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "I stopped to ____ when I got lost.",
+            answer: "ask the way",
+            french: "Je me suis arrêté pour demander mon chemin quand je me suis perdu."
+        },
         // Second set of Travel and transport
-        {category: "Travel and transport", sentence: "The ____ arrived quickly after the accident.", answer: "ambulance"},
-        {category: "Travel and transport", sentence: "We took a boat ride along the ____.", answer: "canal"},
-        {category: "Travel and transport", sentence: "We rode the ____ up the mountain.", answer: "chairlift"},
-        {category: "Travel and transport", sentence: "The ship's ____ was very friendly.", answer: "crew"},
-        {category: "Travel and transport", sentence: "They are traveling on a luxurious ____.", answer: "cruise ship"},
-        {category: "Travel and transport", sentence: "We took the ____ across the river.", answer: "ferry"},
-        {category: "Travel and transport", sentence: "The ships were docked in the ____.", answer: "harbour"},
-        {category: "Travel and transport", sentence: "Please keep your ____ with you at all times.", answer: "luggage"},
-        {category: "Travel and transport", sentence: "The ____ was busy during rush hour.", answer: "motorway"},
-        {category: "Travel and transport", sentence: "The ____ waited for the train.", answer: "passenger"},
-        {category: "Travel and transport", sentence: "We drove through the ____.", answer: "tunnel"},
-        {category: "Travel and transport", sentence: "The delivery ____ arrived this morning.", answer: "van"},
+        {
+            category: "Travel and transport",
+            sentence: "The ____ arrived quickly after the accident.",
+            answer: "ambulance",
+            french: "L'ambulance est arrivée rapidement après l'accident."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "We took a boat ride along the ____.",
+            answer: "canal",
+            french: "Nous avons fait une promenade en bateau le long du canal."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "We rode the ____ up the mountain.",
+            answer: "chairlift",
+            french: "Nous avons pris le télésiège pour monter la montagne."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "The ship's ____ was very friendly.",
+            answer: "crew",
+            french: "L'équipage du navire était très amical."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "They are traveling on a luxurious ____.",
+            answer: "cruise ship",
+            french: "Ils voyagent sur un navire de croisière luxueux."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "We took the ____ across the river.",
+            answer: "ferry",
+            french: "Nous avons pris le ferry pour traverser la rivière."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "The ships were docked in the ____.",
+            answer: "harbour",
+            french: "Les navires étaient amarrés dans le port."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "Please keep your ____ with you at all times.",
+            answer: "luggage",
+            french: "Veuillez garder vos bagages avec vous en tout temps."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "The ____ was busy during rush hour.",
+            answer: "motorway",
+            french: "L'autoroute était encombrée pendant l'heure de pointe."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "The ____ waited for the train.",
+            answer: "passenger",
+            french: "Le passager a attendu le train."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "We drove through the ____.",
+            answer: "tunnel",
+            french: "Nous avons conduit à travers le tunnel."
+        },
+        {
+            category: "Travel and transport",
+            sentence: "The delivery ____ arrived this morning.",
+            answer: "van",
+            french: "La camionnette de livraison est arrivée ce matin."
+        },
         // Opinion adjectives
-        {category: "Opinion adjectives", sentence: "The view from the top was ____.", answer: "amazing"},
-        {category: "Opinion adjectives", sentence: "She had a ____ idea.", answer: "brilliant"},
-        {category: "Opinion adjectives", sentence: "The meal was absolutely ____.", answer: "delicious"},
-        {category: "Opinion adjectives", sentence: "The food tasted ____.", answer: "disgusting"},
-        {category: "Opinion adjectives", sentence: "The weather was ____ yesterday.", answer: "dreadful"},
-        {category: "Opinion adjectives", sentence: "The lecture was so ____ that I almost fell asleep.", answer: "dull"},
-        {category: "Opinion adjectives", sentence: "We had a ____ time at the party.", answer: "fantastic"},
-        {category: "Opinion adjectives", sentence: "It was a ____ experience.", answer: "horrible"},
-        {category: "Opinion adjectives", sentence: "I made a ____ mistake.", answer: "terrible"},
-        {category: "Opinion adjectives", sentence: "She did a ____ job on the project.", answer: "terrific"},
+        {
+            category: "Opinion adjectives",
+            sentence: "The view from the top was ____.",
+            answer: "amazing",
+            french: "La vue du sommet était incroyable."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "She had a ____ idea.",
+            answer: "brilliant",
+            french: "Elle a eu une idée brillante."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "The meal was absolutely ____.",
+            answer: "delicious",
+            french: "Le repas était absolument délicieux."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "The food tasted ____.",
+            answer: "disgusting",
+            french: "La nourriture avait un goût dégoûtant."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "The weather was ____ yesterday.",
+            answer: "dreadful",
+            french: "Le temps était épouvantable hier."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "The lecture was so ____ that I almost fell asleep.",
+            answer: "dull",
+            french: "La conférence était si ennuyeuse que je me suis presque endormi."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "We had a ____ time at the party.",
+            answer: "fantastic",
+            french: "Nous avons passé un moment fantastique à la fête."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "It was a ____ experience.",
+            answer: "horrible",
+            french: "C'était une expérience horrible."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "I made a ____ mistake.",
+            answer: "terrible",
+            french: "J'ai fait une terrible erreur."
+        },
+        {
+            category: "Opinion adjectives",
+            sentence: "She did a ____ job on the project.",
+            answer: "terrific",
+            french: "Elle a fait un travail formidable sur le projet."
+        },
         // Prepositions of movement
-        {category: "Prepositions of movement", sentence: "He decided to ____ the road quickly.", answer: "run across"},
-        {category: "Prepositions of movement", sentence: "She began to ____ the crowd.", answer: "walk away from"},
-        {category: "Prepositions of movement", sentence: "We will ____ the stairs to the basement.", answer: "go down"},
-        {category: "Prepositions of movement", sentence: "He ____ the pool with excitement.", answer: "jump into"},
-        {category: "Prepositions of movement", sentence: "The cat ____ the table.", answer: "jumped off"},
-        {category: "Prepositions of movement", sentence: "The child ____ the chair to reach the cookie jar.", answer: "climbed onto"},
-        {category: "Prepositions of movement", sentence: "She ____ the room quietly.", answer: "walked out of"},
-        {category: "Prepositions of movement", sentence: "They ____ the fence to get to the other side.", answer: "climbed over"},
-        {category: "Prepositions of movement", sentence: "I ____ the shop without noticing it.", answer: "walked past"},
-        {category: "Prepositions of movement", sentence: "We ____ the park on our way home.", answer: "walked through"},
-        {category: "Prepositions of movement", sentence: "He decided to ____ the store instead of driving.", answer: "walk to"},
-        {category: "Prepositions of movement", sentence: "She ____ the hill to catch the bus.", answer: "ran up"},
+        {
+            category: "Prepositions of movement",
+            sentence: "He decided to ____ the road quickly.",
+            answer: "run across",
+            french: "Il a décidé de traverser la route rapidement."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "She began to ____ the crowd.",
+            answer: "walk away from",
+            french: "Elle a commencé à s'éloigner de la foule."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "We will ____ the stairs to the basement.",
+            answer: "go down",
+            french: "Nous allons descendre les escaliers jusqu'au sous-sol."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "He ____ the pool with excitement.",
+            answer: "jump into",
+            french: "Il a sauté dans la piscine avec excitation."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "The cat ____ the table.",
+            answer: "jumped off",
+            french: "Le chat a sauté de la table."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "The child ____ the chair to reach the cookie jar.",
+            answer: "climbed onto",
+            french: "L'enfant a grimpé sur la chaise pour atteindre le pot de biscuits."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "She ____ the room quietly.",
+            answer: "walked out of",
+            french: "Elle est sortie de la pièce silencieusement."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "They ____ the fence to get to the other side.",
+            answer: "climbed over",
+            french: "Ils ont escaladé la clôture pour passer de l'autre côté."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "I ____ the shop without noticing it.",
+            answer: "walked past",
+            french: "Je suis passé devant le magasin sans le remarquer."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "We ____ the park on our way home.",
+            answer: "walked through",
+            french: "Nous avons traversé le parc en rentrant chez nous."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "He decided to ____ the store instead of driving.",
+            answer: "walk to",
+            french: "Il a décidé de marcher jusqu'au magasin au lieu de conduire."
+        },
+        {
+            category: "Prepositions of movement",
+            sentence: "She ____ the hill to catch the bus.",
+            answer: "ran up",
+            french: "Elle a couru sur la colline pour attraper le bus."
+        },
         // Words and phrases
-        {category: "Words and phrases", sentence: "He gave me good ____.", answer: "advice"},
-        {category: "Words and phrases", sentence: "____ when crossing the street.", answer: "Be careful"},
-        {category: "Words and phrases", sentence: "We saw a ____ in the forest.", answer: "bear"},
-        {category: "Words and phrases", sentence: "The ____ connects the two cities.", answer: "bridge"},
-        {category: "Words and phrases", sentence: "The ____ is always right.", answer: "customer"},
-        {category: "Words and phrases", sentence: "Please ____ me to the office.", answer: "follow"},
-        {category: "Words and phrases", sentence: "The concert tickets are ____.", answer: "free"},
-        {category: "Words and phrases", sentence: "In some cultures, people ____ to greet each other.", answer: "kiss on the cheek"},
-        {category: "Words and phrases", sentence: "Before crossing, ____.", answer: "look to the left"},
-        {category: "Words and phrases", sentence: "I think we ____. Let's check the map.", answer: "are lost"},
-        {category: "Words and phrases", sentence: "The ____ is scheduled for 3 PM.", answer: "meeting"},
-        {category: "Words and phrases", sentence: "In the UK, they ____.", answer: "drive on the left"},
-        {category: "Words and phrases", sentence: "The hotel ____ were very helpful during our stay.", answer: "staff"},
-        {category: "Words and phrases", sentence: "There was heavy ____ on the way home.", answer: "traffic"},
-        {category: "Words and phrases", sentence: "We need to ____. We missed the exit.", answer: "turn around"},
-        {category: "Words and phrases", sentence: "The ____ took our order.", answer: "waiter"},
+        {
+            category: "Words and phrases",
+            sentence: "He gave me good ____.",
+            answer: "advice",
+            french: "Il m'a donné de bons conseils."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "____ when crossing the street.",
+            answer: "Be careful",
+            french: "Soyez prudent en traversant la rue."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "We saw a ____ in the forest.",
+            answer: "bear",
+            french: "Nous avons vu un ours dans la forêt."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The ____ connects the two cities.",
+            answer: "bridge",
+            french: "Le pont relie les deux villes."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The ____ is always right.",
+            answer: "customer",
+            french: "Le client a toujours raison."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "Please ____ me to the office.",
+            answer: "follow",
+            french: "Veuillez me suivre jusqu'au bureau."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The concert tickets are ____.",
+            answer: "free",
+            french: "Les billets du concert sont gratuits."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "In some cultures, people ____ to greet each other.",
+            answer: "kiss on the cheek",
+            french: "Dans certaines cultures, les gens s'embrassent sur la joue pour se saluer."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "Before crossing, ____.",
+            answer: "look to the left",
+            french: "Avant de traverser, regardez à gauche."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "I think we ____. Let's check the map.",
+            answer: "are lost",
+            french: "Je pense que nous sommes perdus. Vérifions la carte."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The ____ is scheduled for 3 PM.",
+            answer: "meeting",
+            french: "La réunion est prévue à 15 heures."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "In the UK, they ____.",
+            answer: "drive on the left",
+            french: "Au Royaume-Uni, ils conduisent à gauche."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The hotel ____ were very helpful during our stay.",
+            answer: "staff",
+            french: "Le personnel de l'hôtel a été très serviable pendant notre séjour."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "There was heavy ____ on the way home.",
+            answer: "traffic",
+            french: "Il y avait beaucoup de trafic sur le chemin du retour."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "We need to ____. We missed the exit.",
+            answer: "turn around",
+            french: "Nous devons faire demi-tour. Nous avons raté la sortie."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The ____ took our order.",
+            answer: "waiter",
+            french: "Le serveur a pris notre commande."
+        },
         // Phrases
-        {category: "Words and phrases", sentence: "Excuse me, could you tell me about ____?", answer: "the local attractions"},
-        {category: "Words and phrases", sentence: "Excuse me, could you tell me the way to ____?", answer: "the train station"},
-        {category: "Words and phrases", sentence: "____ you.", answer: "It's lovely to meet"},
-        {category: "Words and phrases", sentence: "____, could you help me with my luggage?", answer: "Sorry to bother you but"},
-        {category: "Words and phrases", sentence: "____ me up from the airport.", answer: "Thank you for picking"},
+        {
+            category: "Words and phrases",
+            sentence: "Excuse me, could you tell me about ____?",
+            answer: "the local attractions",
+            french: "Excusez-moi, pourriez-vous me parler des attractions locales?"
+        },
+        {
+            category: "Words and phrases",
+            sentence: "Excuse me, could you tell me the way to ____?",
+            answer: "the train station",
+            french: "Excusez-moi, pourriez-vous m'indiquer le chemin de la gare?"
+        },
+        {
+            category: "Words and phrases",
+            sentence: "____ you.",
+            answer: "It's lovely to meet",
+            french: "C'est un plaisir de vous rencontrer."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "____, could you help me with my luggage?",
+            answer: "Sorry to bother you but",
+            french: "Désolé de vous déranger, mais pourriez-vous m'aider avec mes bagages?"
+        },
+        {
+            category: "Words and phrases",
+            sentence: "____ me up from the airport.",
+            answer: "Thank you for picking",
+            french: "Merci d'être venu me chercher à l'aéroport."
+        },
         // Second set of Words and phrases
-        {category: "Words and phrases", sentence: "We explored ____.", answer: "the area around Pasadena"},
-        {category: "Words and phrases", sentence: "Call me ____ you arrive.", answer: "as soon as"},
-        {category: "Words and phrases", sentence: "I ____ to catch the bus.", answer: "am in a hurry"},
-        {category: "Words and phrases", sentence: "She decided to ____ the service.", answer: "complain about"},
-        {category: "Words and phrases", sentence: "The sun began to ____ behind the clouds.", answer: "disappear"},
-        {category: "Words and phrases", sentence: "He has a ____ of heights.", answer: "fear"},
-        {category: "Words and phrases", sentence: "Please wait in the ____.", answer: "lobby"},
-        {category: "Words and phrases", sentence: "They stayed at a ____ hotel.", answer: "luxury"},
-        {category: "Words and phrases", sentence: "The city is known for its ____.", answer: "nightlife"},
-        {category: "Words and phrases", sentence: "Did you ____ the changes?", answer: "notice"},
-        {category: "Words and phrases", sentence: "It's polite to ____ when you meet someone new.", answer: "shake hands"},
-        {category: "Words and phrases", sentence: "The children love to ____ at the playground.", answer: "slide"},
-        {category: "Words and phrases", sentence: "There are ten ____ leading to the house.", answer: "steps"},
-        {category: "Words and phrases", sentence: "He gave the waiter a generous ____.", answer: "tip"},
-        {category: "Words and phrases", sentence: "We had breakfast on the ____.", answer: "terrace"},
+        {
+            category: "Words and phrases",
+            sentence: "We explored ____.",
+            answer: "the area around Pasadena",
+            french: "Nous avons exploré la région autour de Pasadena."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "Call me ____ you arrive.",
+            answer: "as soon as",
+            french: "Appelle-moi dès que tu arrives."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "I ____ to catch the bus.",
+            answer: "am in a hurry",
+            french: "Je suis pressé pour attraper le bus."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "She decided to ____ the service.",
+            answer: "complain about",
+            french: "Elle a décidé de se plaindre du service."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The sun began to ____ behind the clouds.",
+            answer: "disappear",
+            french: "Le soleil a commencé à disparaître derrière les nuages."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "He has a ____ of heights.",
+            answer: "fear",
+            french: "Il a peur du vide."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "Please wait in the ____.",
+            answer: "lobby",
+            french: "Veuillez attendre dans le hall."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "They stayed at a ____ hotel.",
+            answer: "luxury",
+            french: "Ils ont séjourné dans un hôtel de luxe."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The city is known for its ____.",
+            answer: "nightlife",
+            french: "La ville est connue pour sa vie nocturne."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "Did you ____ the changes?",
+            answer: "notice",
+            french: "As-tu remarqué les changements?"
+        },
+        {
+            category: "Words and phrases",
+            sentence: "It's polite to ____ when you meet someone new.",
+            answer: "shake hands",
+            french: "Il est poli de serrer la main lorsque vous rencontrez quelqu'un de nouveau."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "The children love to ____ at the playground.",
+            answer: "slide",
+            french: "Les enfants adorent glisser au terrain de jeux."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "There are ten ____ leading to the house.",
+            answer: "steps",
+            french: "Il y a dix marches menant à la maison."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "He gave the waiter a generous ____.",
+            answer: "tip",
+            french: "Il a donné un pourboire généreux au serveur."
+        },
+        {
+            category: "Words and phrases",
+            sentence: "We had breakfast on the ____.",
+            answer: "terrace",
+            french: "Nous avons pris le petit déjeuner sur la terrasse."
+        },
         // Culture in mind
-        {category: "Culture in mind", sentence: "Please ____ during the ceremony.", answer: "behave"},
-        {category: "Culture in mind", sentence: "It's a local ____ to remove your shoes.", answer: "custom"},
-        {category: "Culture in mind", sentence: "It was an ____ moment for everyone.", answer: "embarrassing"},
-        {category: "Culture in mind", sentence: "She gave me a wonderful ____.", answer: "gift"},
-        {category: "Culture in mind", sentence: "Our ____ made us feel at home.", answer: "host"},
-        {category: "Culture in mind", sentence: "I stayed with a ____ during my exchange program.", answer: "host family"},
-        {category: "Culture in mind", sentence: "We should ____ them to the party.", answer: "invite"},
+        {
+            category: "Culture in mind",
+            sentence: "Please ____ during the ceremony.",
+            answer: "behave",
+            french: "Veuillez vous comporter correctement pendant la cérémonie."
+        },
+        {
+            category: "Culture in mind",
+            sentence: "It's a local ____ to remove your shoes.",
+            answer: "custom",
+            french: "C'est une coutume locale d'enlever ses chaussures."
+        },
+        {
+            category: "Culture in mind",
+            sentence: "It was an ____ moment for everyone.",
+            answer: "embarrassing",
+            french: "C'était un moment embarrassant pour tout le monde."
+        },
+        {
+            category: "Culture in mind",
+            sentence: "She gave me a wonderful ____.",
+            answer: "gift",
+            french: "Elle m'a offert un merveilleux cadeau."
+        },
+        {
+            category: "Culture in mind",
+            sentence: "Our ____ made us feel at home.",
+            answer: "host",
+            french: "Notre hôte nous a fait nous sentir comme chez nous."
+        },
+        {
+            category: "Culture in mind",
+            sentence: "I stayed with a ____ during my exchange program.",
+            answer: "host family",
+            french: "J'ai séjourné dans une famille d'accueil pendant mon programme d'échange."
+        },
+        {
+            category: "Culture in mind",
+            sentence: "We should ____ them to the party.",
+            answer: "invite",
+            french: "Nous devrions les inviter à la fête."
+        },
         // Geography
-        {category: "Geography", sentence: "The map was not ____.", answer: "accurate"},
-        {category: "Geography", sentence: "Africa is a ____.", answer: "continent"},
-        {category: "Geography", sentence: "She explained everything in ____.", answer: "detail"},
-        {category: "Geography", sentence: "Let's ____ the cake equally.", answer: "divide"},
-        {category: "Geography", sentence: "They live in the ____ part of the city.", answer: "eastern"},
-        {category: "Geography", sentence: "The ____ divides the Earth into two hemispheres.", answer: "Equator"},
-        {category: "Geography", sentence: "The land was very ____.", answer: "flat"},
-        {category: "Geography", sentence: "The ____ lights are spectacular.", answer: "northern"},
-        {category: "Geography", sentence: "The Earth is ____.", answer: "round"},
-        {category: "Geography", sentence: "The cookies are in the ____ of stars.", answer: "shape"},
-        {category: "Geography", sentence: "What ____ is your shirt?", answer: "size"},
-        {category: "Geography", sentence: "They moved to the ____ coast.", answer: "southern"},
-        {category: "Geography", sentence: "The sun sets in the ____ sky.", answer: "western"},
+        {
+            category: "Geography",
+            sentence: "The map was not ____.",
+            answer: "accurate",
+            french: "La carte n'était pas précise."
+        },
+        {
+            category: "Geography",
+            sentence: "Africa is a ____.",
+            answer: "continent",
+            french: "L'Afrique est un continent."
+        },
+        {
+            category: "Geography",
+            sentence: "She explained everything in ____.",
+            answer: "detail",
+            french: "Elle a tout expliqué en détail."
+        },
+        {
+            category: "Geography",
+            sentence: "Let's ____ the cake equally.",
+            answer: "divide",
+            french: "Divisons le gâteau de manière égale."
+        },
+        {
+            category: "Geography",
+            sentence: "They live in the ____ part of the city.",
+            answer: "eastern",
+            french: "Ils vivent dans la partie est de la ville."
+        },
+        {
+            category: "Geography",
+            sentence: "The ____ divides the Earth into two hemispheres.",
+            answer: "Equator",
+            french: "L'équateur divise la Terre en deux hémisphères."
+        },
+        {
+            category: "Geography",
+            sentence: "The land was very ____.",
+            answer: "flat",
+            french: "Le terrain était très plat."
+        },
+        {
+            category: "Geography",
+            sentence: "The ____ lights are spectacular.",
+            answer: "northern",
+            french: "Les aurores boréales sont spectaculaires."
+        },
+        {
+            category: "Geography",
+            sentence: "The Earth is ____.",
+            answer: "round",
+            french: "La Terre est ronde."
+        },
+        {
+            category: "Geography",
+            sentence: "The cookies are in the ____ of stars.",
+            answer: "shape",
+            french: "Les biscuits sont en forme d'étoiles."
+        },
+        {
+            category: "Geography",
+            sentence: "What ____ is your shirt?",
+            answer: "size",
+            french: "Quelle taille fait ta chemise?"
+        },
+        {
+            category: "Geography",
+            sentence: "They moved to the ____ coast.",
+            answer: "southern",
+            french: "Ils ont déménagé sur la côte sud."
+        },
+        {
+            category: "Geography",
+            sentence: "The sun sets in the ____ sky.",
+            answer: "western",
+            french: "Le soleil se couche dans le ciel occidental."
+        },
     ];
- 
-    function renderExercises() {
-        const container = document.getElementById('exercises-container');
-        let currentCategory = '';
-        exercises.forEach((exercise, index) => {
-            if (exercise.category !== currentCategory) {
-                currentCategory = exercise.category;
-                const categoryHeader = document.createElement('h2');
-                categoryHeader.textContent = currentCategory;
-                container.appendChild(categoryHeader);
-            }
-            const exerciseDiv = document.createElement('div');
-            exerciseDiv.className = 'exercise';
- 
-            const questionP = document.createElement('p');
-            questionP.className = 'question';
-            questionP.innerHTML = (index + 1) + '. ' + exercise.sentence.replace('____', `<input type="text" id="answer-${index}" data-index="${index}">`);
-            exerciseDiv.appendChild(questionP);
- 
-            container.appendChild(exerciseDiv);
+
+    // Transform the exercises array into data object
+    var data = {};
+
+    // Group exercises by category
+    exercises.forEach(function(exercise) {
+        var category = exercise.category;
+        if (!data[category]) {
+            data[category] = {
+                "title": category,
+                "exercises": [
+                    {
+                        "title": "Fill in the gap",
+                        "instructions": "",
+                        "questions": []
+                    }
+                ]
+            };
+        }
+        // Now add the question to the questions array
+        var questionText = exercise.sentence.replace('____', '__________');
+        data[category].exercises[0].questions.push({
+            "question": questionText,
+            "answer": [exercise.answer],
+            "french": exercise.french
         });
-    }
- 
-    function checkAnswers() {
-        let score = 0;
-        exercises.forEach((exercise, index) => {
-            const userAnswer = document.getElementById(`answer-${index}`).value.trim().toLowerCase();
-            const correctAnswer = exercise.answer.toLowerCase();
-            if (userAnswer === correctAnswer) {
-                score++;
-                document.getElementById(`answer-${index}`).style.borderColor = 'green';
-            } else {
-                document.getElementById(`answer-${index}`).style.borderColor = 'red';
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var tabs = document.querySelector('#tabs');
+        var unitsContainer = document.querySelector('#units-container');
+
+        // Generate tabs
+        var firstUnit = true;
+        for (var unitId in data) {
+            var unit = data[unitId];
+            var tab = document.createElement('li');
+            tab.textContent = unit.title;
+            tab.setAttribute('data-unit', unitId);
+            if (firstUnit) {
+                tab.classList.add('active');
+                firstUnit = false;
             }
-        });
-        document.getElementById('score').textContent = score;
-        document.getElementById('total').textContent = exercises.length;
-        document.getElementById('results').style.display = 'block';
-        showCorrectAnswers();
-    }
- 
-    function showCorrectAnswers() {
-        const answersDiv = document.getElementById('answers');
-        answersDiv.innerHTML = '';
-        exercises.forEach((exercise, index) => {
-            const userAnswer = document.getElementById(`answer-${index}`).value.trim().toLowerCase();
-            const correctAnswer = exercise.answer;
-            const answerP = document.createElement('p');
-            answerP.innerHTML = `<strong>${index + 1}.</strong> Correct answer: <span class="correct-answer">${correctAnswer}</span>`;
-            if (userAnswer !== correctAnswer.toLowerCase()) {
-                answerP.innerHTML += ` | Your answer: <span class="wrong-answer">${userAnswer}</span>`;
+            tabs.appendChild(tab);
+        }
+
+        // Generate units content
+        firstUnit = true;
+        for (var unitId in data) {
+            var unit = data[unitId];
+            var unitDiv = document.createElement('div');
+            unitDiv.id = unitId;
+            unitDiv.classList.add('unit-content');
+            if (firstUnit) {
+                unitDiv.classList.add('active');
+                firstUnit = false;
             }
-            answersDiv.appendChild(answerP);
+
+            // Generate exercises
+            unit.exercises.forEach(function(exercise) {
+                var exerciseDiv = document.createElement('div');
+                exerciseDiv.classList.add('exercise');
+
+                var exerciseTitle = document.createElement('h2');
+                exerciseTitle.textContent = exercise.title;
+                exerciseDiv.appendChild(exerciseTitle);
+
+                if (exercise.instructions) {
+                    var instructions = document.createElement('p');
+                    instructions.classList.add('instructions');
+                    instructions.textContent = exercise.instructions;
+                    exerciseDiv.appendChild(instructions);
+                }
+
+                var questionsList = document.createElement('ol');
+                questionsList.classList.add('questions');
+                exercise.questions.forEach(function(q, index) {
+                    var questionItem = document.createElement('li');
+                    var label = document.createElement('label');
+                    label.innerHTML = q.question;
+                    questionItem.appendChild(label);
+
+                    var input = document.createElement('input');
+                    input.type = 'text';
+                    questionItem.appendChild(input);
+
+                    // Add French translation
+                    var frenchDiv = document.createElement('div');
+                    frenchDiv.classList.add('french-translation');
+                    frenchDiv.textContent = q.french;
+                    questionItem.appendChild(frenchDiv);
+
+                    var feedback = document.createElement('span');
+                    feedback.classList.add('feedback');
+                    questionItem.appendChild(feedback);
+
+                    questionsList.appendChild(questionItem);
+                });
+                exerciseDiv.appendChild(questionsList);
+
+                var checkButton = document.createElement('button');
+                checkButton.classList.add('check-button');
+                checkButton.textContent = 'Check My Answers';
+                exerciseDiv.appendChild(checkButton);
+
+                var scoreDiv = document.createElement('div');
+                scoreDiv.classList.add('score');
+                exerciseDiv.appendChild(scoreDiv);
+
+                unitDiv.appendChild(exerciseDiv);
+            });
+
+            unitsContainer.appendChild(unitDiv);
+        }
+
+        // Tab navigation
+        var tabElements = document.querySelectorAll('#tabs li');
+        var unitElements = document.querySelectorAll('.unit-content');
+
+        tabElements.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                tabElements.forEach(function(t) {
+                    t.classList.remove('active');
+                });
+                // Hide all units
+                unitElements.forEach(function(unit) {
+                    unit.classList.remove('active');
+                });
+                // Activate the clicked tab and corresponding unit
+                tab.classList.add('active');
+                var unitId = tab.getAttribute('data-unit');
+                document.getElementById(unitId).classList.add('active');
+            });
         });
-    }
- 
-    document.getElementById('finish-btn').addEventListener('click', checkAnswers);
- 
-    renderExercises();
-</script>
- 
+
+        // Answer checking
+        var exercisesDivs = document.querySelectorAll('.exercise');
+        exercisesDivs.forEach(function(exerciseDiv) {
+            var checkButton = exerciseDiv.querySelector('.check-button');
+            checkButton.addEventListener('click', function() {
+                var questions = exerciseDiv.querySelectorAll('.questions li');
+                var score = 0;
+                var total = 0;
+                var exerciseTitle = exerciseDiv.querySelector('h2').textContent.trim();
+                var unitId = exerciseDiv.closest('.unit-content').id;
+                var exerciseData = getExerciseData(unitId, exerciseTitle);
+                questions.forEach(function(question, index) {
+                    var input = question.querySelector('input');
+                    var userAnswer = input.value.trim().toLowerCase();
+                    var feedback = question.querySelector('.feedback');
+                    var qData = exerciseData.questions[index];
+                    if (qData.answer.length === 0) {
+                        feedback.textContent = ""; // No answer provided, user's own answer
+                    } else if (qData.answer.map(a => a.toLowerCase()).includes(userAnswer)) {
+                        feedback.textContent = "Correct!";
+                        feedback.className = "feedback correct";
+                        score++;
+                    } else {
+                        feedback.textContent = "Incorrect! Correct answer: " + qData.answer[0];
+                        feedback.className = "feedback incorrect";
+                    }
+                    total++;
+                });
+                exerciseDiv.querySelector('.score').textContent = "Your score: " + score + "/" + total;
+            });
+        });
+
+        // Function to get exercise data
+        function getExerciseData(unitId, exerciseTitle) {
+            var unitData = data[unitId];
+            for (var i = 0; i < unitData.exercises.length; i++) {
+                if (unitData.exercises[i].title.trim() === exerciseTitle) {
+                    return unitData.exercises[i];
+                }
+            }
+            return null;
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var authButton = document.getElementById('auth-button');
+    authButton.addEventListener('click', function() {
+        var passwordInput = document.getElementById('password-input').value;
+        if (passwordInput === 'aubepine') {
+            document.getElementById('auth-container').style.display = 'none'; // Hide the auth prompt
+            document.getElementById('content-container').style.display = 'block'; // Show main content
+        } else {
+            document.getElementById('auth-error').style.display = 'block'; // Show error message
+        }
+    });
+});
+
+
+    </script>
+    </div>
 </body>
 </html>
